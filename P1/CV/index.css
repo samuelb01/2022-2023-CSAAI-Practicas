@@ -29,11 +29,11 @@ clear: both;
 }
 
 #c1 {
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255, 0.6);
 }
 
 #c2 {
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255, 0.6);
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
@@ -83,4 +83,16 @@ h2 {
 .icono {
   height: 25px;
   width: 25px;
+}
+
+table {
+  padding: 5px;
+}
+
+tr {
+  padding: 5px;
+}
+
+th {
+  padding: 5px;
 }

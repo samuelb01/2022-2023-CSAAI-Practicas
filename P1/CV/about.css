@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+
+@media screen and (max-width: 600px) {
+    .iresponsive {
+        width: 100%;
+    }
+}
+body {
+    background-image: url(mariobros-backgroundabout.jpg);
+    background-position: center;
+    padding: 30px;
+    min-height: 1000px;
+    margin: auto;
+}

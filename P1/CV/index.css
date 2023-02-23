@@ -30,6 +30,7 @@ clear: both;
 
 #c1, #c2 {
   background-color: rgb(255, 255, 255, 0.6);
+  border-radius: 5px;
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */

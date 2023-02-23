@@ -28,11 +28,7 @@ display: table;
 clear: both;
 }
 
-#c1 {
-  background-color: rgb(255, 255, 255, 0.6);
-}
-
-#c2 {
+#c1, #c2 {
   background-color: rgb(255, 255, 255, 0.6);
 }
 
@@ -85,14 +81,6 @@ h2 {
   width: 25px;
 }
 
-table {
-  padding: 5px;
-}
-
-tr {
-  padding: 5px;
-}
-
-th {
+table, tr, th {
   padding: 5px;
 }

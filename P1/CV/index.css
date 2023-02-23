@@ -71,15 +71,16 @@ body {
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
 
-
-#imgmario {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+h2 {
+  padding: 5px;
+  margin: auto;
+  border: solid;
+  border-color: black;
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.8);
 }
 
-h2 {
-  padding: auto;
-  margin: auto;
-  border: blue;
+.icono {
+  height: 25px;
+  width: 25px;
 }

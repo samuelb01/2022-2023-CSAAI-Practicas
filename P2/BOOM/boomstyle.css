@@ -1,0 +1,54 @@
+body {
+    background-color: white;
+    border-color: green;
+    margin: 10px;
+    background-position: center;
+  }
+  
+  h2 {
+    color:blue;
+  }
+  
+  p {
+    color: black;
+  }
+  
+  .Panel{
+    width: fit-content;
+    border: solid;
+    border-color: green;
+    padding: 5px;
+    margin: auto; /*Coloca el panel en el centro*/
+  }
+
+  .Cabecera{
+    width: auto;
+    border: solid;
+    border-color: green;
+    padding: 5px;
+    margin: auto; /*Coloca el panel en el centro*/
+  }
+
+  .Teclado{
+    width: fit-content;
+    border: solid;
+    border-color: green;
+    padding: 5px;
+    margin: auto; /*Coloca el panel en el centro*/
+  }
+
+  .Codigo {
+    width: 50px;
+  }
+
+  td {
+    text-align: center;
+    border: solid;
+    border-color: green;
+    padding: 5px;
+  }
+
+  button {
+    text-align: center;
+    font-size: 50px;
+  }

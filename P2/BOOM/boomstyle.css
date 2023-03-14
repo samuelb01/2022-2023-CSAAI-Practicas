@@ -1,54 +1,70 @@
 body {
-    background-color: white;
-    border-color: green;
-    margin: 10px;
-    background-position: center;
-  }
-  
-  h2 {
-    color:blue;
-  }
-  
-  p {
-    color: black;
-  }
-  
-  .Panel{
-    width: fit-content;
-    border: solid;
-    border-color: green;
-    padding: 5px;
-    margin: auto; /*Coloca el panel en el centro*/
-  }
+  background-color: white;
+  margin: 10px;
+  background-position: center;
+}
 
-  .Cabecera{
-    width: auto;
-    border: solid;
-    border-color: green;
-    padding: 5px;
-    margin: auto; /*Coloca el panel en el centro*/
-  }
+.Panel{
+  width: fit-content;
+  border: solid;
+  border-color: green;
+  padding: 5px;
+  margin: auto; /*Coloca el panel en el centro*/
+}
 
-  .Teclado{
-    width: fit-content;
-    border: solid;
-    border-color: green;
-    padding: 5px;
-    margin: auto; /*Coloca el panel en el centro*/
-  }
+.Cabecera{
+  width: auto;
+  border: solid;
+  border-color: pink;
+  padding: 5px;
+  margin: auto; /*Coloca el panel en el centro*/
+}
 
-  .Codigo {
-    width: 50px;
-  }
+.Linea1 {
+  text-align: center;
+  font-size: 40px;
+}
 
-  td {
-    text-align: center;
-    border: solid;
-    border-color: green;
-    padding: 5px;
-  }
+.Linea2 {
+  text-align: center;
+  font-size: 40px;
+}
 
-  button {
-    text-align: center;
-    font-size: 50px;
-  }
+.Linea3 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.Linea4 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.Linea5 {
+  font-size: 10px;
+}
+
+.Teclado {
+  text-align: center; /*centro*/
+  background-color: rgba(106, 77, 252, 0.705);
+  padding: 15px;
+  border: solid;
+  border-color: orange;
+  border-radius: 5px;
+  margin: auto; /*Coloca el panel en el centro*/
+  width: fit-content;
+}
+
+.Codigo {
+  border: solid;
+  border-color: yellow;
+}
+
+span {
+  border: solid;
+  border-color: black;
+  font-size: 40px;
+  text-align: center;
+  width: max-content;
+}
+

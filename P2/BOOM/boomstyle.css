@@ -5,7 +5,7 @@ body {
 }
 
 .Panel{
-  width: fit-content;
+  width: 300px;
   border: solid;
   border-color: green;
   padding: 5px;
@@ -41,7 +41,8 @@ body {
 }
 
 .Linea5 {
-  font-size: 10px;
+  text-align: center;
+  font-size: 40px;
 }
 
 .Teclado {
@@ -52,19 +53,31 @@ body {
   border-color: orange;
   border-radius: 5px;
   margin: auto; /*Coloca el panel en el centro*/
-  width: fit-content;
+  width: auto;
+  font-size: 50px;
 }
 
 .Codigo {
+  text-align: center;
   border: solid;
   border-color: yellow;
+  font-size: 50px;
 }
 
-span {
-  border: solid;
-  border-color: black;
-  font-size: 40px;
+#cronometro {
   text-align: center;
-  width: max-content;
 }
 
+button {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+#secretpassword {
+  font-size: 40px;
+  width: 100%;
+  height: 50px;
+  border: solid;
+  border-color: blue;
+}

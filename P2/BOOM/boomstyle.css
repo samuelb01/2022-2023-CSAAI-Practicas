@@ -2,22 +2,31 @@ body {
   background-color: white;
   margin: 10px;
   background-position: center;
+  background-image: url("matrix.jpg");
 }
 
 .Panel{
   width: 300px;
-  border: solid;
-  border-color: green;
   padding: 5px;
   margin: auto; /*Coloca el panel en el centro*/
 }
 
 .Cabecera{
   width: auto;
-  border: solid;
-  border-color: pink;
   padding: 5px;
   margin: auto; /*Coloca el panel en el centro*/
+}
+
+.Teclado {
+  text-align: center; /*centro*/
+  background-color: rgba(255, 255, 255, 0.705);
+  padding: 15px;
+  border: solid;
+  border-color: green;
+  border-radius: 50px;
+  margin: auto; /*Coloca el panel en el centro*/
+  width: auto;
+  font-size: 50px;
 }
 
 .Linea1 {
@@ -45,18 +54,6 @@ body {
   font-size: 40px;
 }
 
-.Teclado {
-  text-align: center; /*centro*/
-  background-color: rgba(106, 77, 252, 0.705);
-  padding: 15px;
-  border: solid;
-  border-color: orange;
-  border-radius: 5px;
-  margin: auto; /*Coloca el panel en el centro*/
-  width: auto;
-  font-size: 50px;
-}
-
 .Codigo {
   text-align: center;
   border: solid;
@@ -66,18 +63,21 @@ body {
 
 #cronometro {
   text-align: center;
+  font-size: 40px;
+  color: white;
 }
 
 button {
   width: 60px;
   height: 40px;
   border-radius: 5px;
+  font-family: Verdana;
 }
 
 #secretpassword {
   font-size: 40px;
   width: 100%;
   height: 50px;
-  border: solid;
-  border-color: blue;
+  border-radius: 10px;
+  background-color: rgba(217, 226, 216, 0.705);
 }

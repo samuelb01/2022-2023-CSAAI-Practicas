@@ -31,6 +31,7 @@ gui.start.onclick = () => {
 gui.stop.onclick = () => {
     console.log("Stop!");
     crono.stop();
+    start = true;
 }
 
 //-- Reset del cronómetro

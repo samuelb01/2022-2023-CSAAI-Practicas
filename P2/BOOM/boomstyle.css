@@ -54,17 +54,12 @@ body {
   font-size: 40px;
 }
 
-.Codigo {
-  text-align: center;
-  border: solid;
-  border-color: yellow;
-  font-size: 50px;
-}
-
 #cronometro {
   text-align: center;
   font-size: 40px;
-  color: white;
+  color: green;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.705);
 }
 
 button {

@@ -66,7 +66,7 @@ function evaluar(valor) {
     for (let key of secretkey) {
         if (key == valor) {
             secretcode[pos].innerHTML = key;
-            secretcode[pos].innerHTML.style.backgroundColor = "green";
+            secretcode[pos].style.color = "green";
             guess++;
         }
         

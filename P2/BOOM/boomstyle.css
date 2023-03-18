@@ -75,4 +75,5 @@ button {
   height: 50px;
   border-radius: 10px;
   background-color: rgba(217, 226, 216, 0.705);
+  color: red;
 }

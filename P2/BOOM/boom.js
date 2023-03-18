@@ -1,12 +1,8 @@
-
-//-- Punto de entrada: una vez cargada la página se llama a esta
-console.log("Aquí comienza tu código JS...")
-
 //-- Variables
-var secretcode = document.getElementsByClassName("password")
-var botones = document.getElementsByClassName("digito")
-let cronom = document.getElementById("cronometro")
-var start = true
+var secretcode = document.getElementsByClassName("password");
+var botones = document.getElementsByClassName("digito");
+var cronom = document.getElementById("cronometro");
+var start = true;
 var guess = 0;
 
 //-- Elementos de la gui

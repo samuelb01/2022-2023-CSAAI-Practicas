@@ -5,6 +5,7 @@ console.log("Aquí comienza tu código JS...")
 //-- Variables
 var secretcode = document.getElementsByClassName("password")
 var botones = document.getElementsByClassName("digito")
+let cronom = document.getElementById("cronometro")
 var start = true
 var guess = 0;
 
@@ -52,7 +53,7 @@ function getRandomInt(max) {
 
 //-- Generamos números secretos y los almacenamos en un array
 for (let i = 0; i < 4; i++) {
-    let rnum = getRandomInt(4);
+    let rnum = getRandomInt(10);
     secretkey.push(rnum.toString());
 }
 
@@ -76,6 +77,7 @@ function evaluar(valor) {
     
     if (guess == 4) {
         crono.stop();
+        cronom.style.color = "green";
     }
 }
 
@@ -87,6 +89,7 @@ for (let boton of botones) {
             crono.start();
             start = false;
             console.log(start);
+            cronom.style.color = "red";
         }
         evaluar(ev.target.value);
     }

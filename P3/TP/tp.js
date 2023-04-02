@@ -81,16 +81,13 @@ function dibujarO(x, y, img) {
   //-- Radio, Angulo inicial y angulo final
   ctx.arc(x, y, r, 0, 2 * Math.PI);
 
-  ctx.fillStyle = "green";
-  ctx.fill();
-
   ctx.drawImage(img, x-25, y-25)
 
   ctx.closePath();
 }
 
 //-- función para pintar el proyectil
-function dibujarP(x, y, lx, ly, color) {
+function dibujarP(x, y, lx, ly) {
 
     //-- Pintando el proyectil
     ctx.beginPath();
@@ -100,9 +97,6 @@ function dibujarP(x, y, lx, ly, color) {
 
     //-- Añadimos imagen
     ctx.drawImage(goldfish, x, y)
-
-    ctx.fillStyle = "red";
-    ctx.fill();
 
     ctx.closePath();
 
@@ -132,7 +126,7 @@ pecera_vacia.onload = ()=> {
 dibujarO(xo, yo, pecera_vacia); // Pintar el objetivo
 
 //-- Dibujar el proyectil en la posición inicial
-dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
+dibujarP(xop, canvas.height-yop, 50, 50); // Pintar el proyectil
 
 //-- Función principal de actualización
 function lanzar() {

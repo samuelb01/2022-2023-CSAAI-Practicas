@@ -56,6 +56,10 @@ let h, w, r;
 //    cercano a la circunferencia objetivo (px, py)
 let px, py;
 
+//-- Variables para comprobar colision y victoria;
+let colision = 0;
+let victoria;
+
 //-- Acceder al botón de disparo
 const btnLanzar = document.getElementById("btnLanzar");
 
@@ -118,8 +122,6 @@ function dibujarTiroP() {
 
 //-- Dibujar el objetivo
 dibujarO(xo,yo); // Pintar el objetivo
-console.log(xo);
-console.log(yo);
 
 //-- Dibujar el proyectil en la posición inicial
 dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
@@ -128,13 +130,15 @@ dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
 function lanzar() {
   //-- Implementación del algoritmo de animación:
   if (xp + 50 > canvas.width || xp < 0 || yp > canvas.height || yp - 50 < 0) {
-    location.reload();
+    colision = 1;
+    victoria = 0;
   }
 
   //-- Velocidad y ángulo incial del proyectil
   if (block == 0) {
     velp = Number(vel_range.value);
     angp = Number(ang_range.value);
+    block = 1;
   }
 
   //-- Comprobar si hay colisión
@@ -149,10 +153,8 @@ function lanzar() {
   if ( py > yop + h ) py = yop + h;
   distancia = Math.sqrt( (xo - px)*(xo - px) + (yo - py)*(yo - py) );
   if ( distancia < r ) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "25px Arial";
-    ctx.fillStyle = 'yellow'
-    ctx.fillText("Texto sólido", 10, 30);
+    colision = 1;
+    victoria = 1;
   }
 
   //-- 1) Actualizar posición de los elementos
@@ -165,17 +167,32 @@ function lanzar() {
 
   dibujarP(xp, canvas.height-yp, 50, 50, "red"); // Pintar el proyectil
 
-  //-- 4) Repetir
-  block = 1;
-  requestAnimationFrame(lanzar);
+  if (colision == 0) {
+    //-- 4) Repetir
+    requestAnimationFrame(lanzar);
+  }
+  if (colision == 1 && victoria == 0) {
+    crono.stop();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "100px Verdana";
+    ctx.fillStyle = 'red'
+    ctx.fillText("PERDISTE", 70, 230);
+  }
+  if (colision == 1 && victoria == 1) {
+    crono.stop();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "100px Verdana";
+    ctx.fillStyle = 'green'
+    ctx.fillText("GANASTE", 80, 230);
+  }
 }
 
 //-- Otras funciones....
-console.log(block);
 //-- Función de retrollamada del botón de disparo
 btnLanzar.onclick = () => {
   if (block == 0) {
     lanzar();
+    crono.start();
   }
   block = 1;
 }

@@ -113,16 +113,20 @@ function dibujarTiroP() {
 goldfish.onload = ()=> {
   //-- Insertar la imagen en el canvas, una vez que
   //-- ya esté cargada!
-  //-- Dibujar el proyectil en la posición inicial
-  dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
+  ctx.drawImage(goldfish, xop, yop);
 };
 
 pecera_vacia.onload = ()=> {
   //-- Insertar la imagen en el canvas, una vez que
   //-- ya esté cargada!
-  //-- Dibujar el objetivo
-  dibujarO(xo, yo, pecera_vacia); // Pintar el objetivo
+  ctx.drawImage(pecera_vacia, xo-25,yo-25);
 };
+
+//-- Dibujar el objetivo
+dibujarO(xo, yo, pecera_vacia); // Pintar el objetivo
+
+//-- Dibujar el proyectil en la posición inicial
+dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
 
 //-- Función principal de actualización
 function lanzar() {

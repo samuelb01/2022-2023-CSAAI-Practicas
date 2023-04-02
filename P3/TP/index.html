@@ -11,6 +11,7 @@
 
     <!-- Código javascript -->
     <script src="tp.js" defer></script>
+    <script src="crono.js"></script>
 
 </head>
 <body>
@@ -18,8 +19,22 @@
     <h1>Tiro parabólico</h1>
     <canvas id="ctiro"></canvas>
 
-    <input type="button" id="btnLanzar" value="Lanzar">
-    <input type="button" id="btnIniciar" value="Iniciar">
+    <div>
+        <p id="cronometro"> Aquí va el crono </p>
+
+        <p>
+            <b>Velocidad del desparo:</b> <br>
+            <input type="range" id="vel_range" min="0", max="100" > <span id="vel_range_disp"></span>
+        </p>
+        <p>  
+            <b>Ángulo del disparo:</b> <br>
+            <input type="range" id="ang_range" min="0" max="90"> <span id="ang_range_disp"></span> 
+        </p>
+
+        <input type="button" id="btnLanzar" value="Lanzar">
+        <input type="button" id="btnIniciar" value="Iniciar">
+    </div>
+    
 
 </body>
 </html>

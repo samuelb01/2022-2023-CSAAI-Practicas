@@ -113,7 +113,7 @@ function dibujarTiroP() {
 goldfish.onload = ()=> {
   //-- Insertar la imagen en el canvas, una vez que
   //-- ya esté cargada!
-  ctx.drawImage(goldfish, xop, yop);
+  ctx.drawImage(goldfish, xop, canvas.height-yop);
 };
 
 pecera_vacia.onload = ()=> {

@@ -81,6 +81,9 @@ function dibujarO(x, y, img) {
   //-- Radio, Angulo inicial y angulo final
   ctx.arc(x, y, r, 0, 2 * Math.PI);
 
+  ctx.fillStyle = "green";
+  ctx.fill();
+
   ctx.drawImage(img, x-25, y-25)
 
   ctx.closePath();
@@ -97,6 +100,9 @@ function dibujarP(x, y, lx, ly, color) {
 
     //-- Añadimos imagen
     ctx.drawImage(goldfish, x, y)
+
+    ctx.fillStyle = "red";
+    ctx.fill();
 
     ctx.closePath();
 
@@ -144,20 +150,15 @@ function lanzar() {
   }
 
   //-- Comprobar si hay colisión
-  // Círculo con centro en (xo, yo) y radio r
-  // Rectángulo con esquina superior izquierda en (xop, yop) ancho w y altura h
-  // Punto del perímetro del rectángulo más cercano a la circunferencia en (px,py)
-  px = xo; // En principio son iguales
-  if ( px < xop ) px = xop;
-  if ( px > xop + w ) px = xop + w;
-  py = yo;
-  if ( py < yop ) py = yop;
-  if ( py > yop + h ) py = yop + h;
+  // (px, py) centro del proyectil
+  px = xp + 25;
+  py = (canvas.height - yp) + 25;
   distancia = Math.sqrt( (xo - px)*(xo - px) + (yo - py)*(yo - py) );
   if ( distancia < r ) {
     colision = 1;
     victoria = 1;
   }
+
 
   //-- 1) Actualizar posición de los elementos
   dibujarTiroP();

@@ -149,7 +149,6 @@ function lanzar() {
   if ( py > yop + h ) py = yop + h;
   distancia = Math.sqrt( (xo - px)*(xo - px) + (yo - py)*(yo - py) );
   if ( distancia < r ) {
-    console.log("IMPACTO")
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "25px Arial";
     ctx.fillStyle = 'yellow'
@@ -172,20 +171,25 @@ function lanzar() {
 }
 
 //-- Otras funciones....
-//-- Función de retrollamada del botón de disparo
-btnLanzar.onclick = () => {
-  lanzar();
-}
+console.log(block);
+if (block == 0) {
+  //-- Función de retrollamada del botón de disparo
+  btnLanzar.onclick = () => {
+    lanzar();
+    block = 1;
+  }
 
-//-- Función de retrollamada del botón de inicio
-btnIniciar.onclick = () => {
-  location.reload();
+  //-- Función de retrollamada del botón de inicio
+  btnIniciar.onclick = () => {
+    location.reload();
+    block = 1
+  }
 }
 
 //-- Función genera numero aleatorio para la pos del onjetivo
 function getRandomInt(min, max){
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 //-- Función para mostrar valore de la interfaz de velocidad
 vel_range.oninput = () => {

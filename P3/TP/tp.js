@@ -113,7 +113,7 @@ function dibujarP(x, y, lx, ly, color) {
 function dibujarTiroP() {
   xp = xop + velp * Math.cos(angp * Math.PI / 180) * t; //Se calcula posición x del proyectil
   yp = yop + velp * Math.sin(angp * Math.PI / 180) * t - 0.5 * gt * t * t; //Se calcula posición y del proyectil
-  t += 0.02; //La simulación avanza cada 0.1 segundos, para más lento disminuir éste número
+  t += 0.1; //La simulación avanza cada 0.1 segundos, para más lento disminuir éste número
 }
 
 //-- Dibujar el objetivo

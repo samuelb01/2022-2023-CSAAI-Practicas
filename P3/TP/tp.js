@@ -10,6 +10,9 @@ const crono = new Crono(gui.display);
 //-- Obtención del canvas y de los elementos HTML a usar
 const canvas = document.getElementById("ctiro");
 const ctx = canvas.getContext("2d");
+var pecera_vacia = document.getElementById("pecera_vacia");
+var pecera_pez = document.getElementById("pecera_pez");
+var goldfish = document.getElementById("goldfish");
 
 //-- Dimensiones canvas
 canvas.width = 700;
@@ -67,7 +70,7 @@ const btnLanzar = document.getElementById("btnLanzar");
 const btnIniciar = document.getElementById("btnIniciar");
 
 //-- función para pintar el objetivo
-function dibujarO(x,y) {
+function dibujarO(x, y, img) {
   //Radio circunferencia objetivo
   r = 25;
 
@@ -77,15 +80,8 @@ function dibujarO(x,y) {
   //-- Dibujar un circulo: coordenadas x,y del centro
   //-- Radio, Angulo inicial y angulo final
   ctx.arc(x, y, r, 0, 2 * Math.PI);
-  ctx.strokeStyle = 'blue';
-  ctx.lineWidth = 2;
-  ctx.fillStyle = 'red';
 
-  //-- Dibujar el relleno
-  ctx.fill()    
-
-  //-- Dibujar el trazo
-  ctx.stroke();
+  ctx.drawImage(img, x-25, y-25)
 
   ctx.closePath();
 }
@@ -99,14 +95,8 @@ function dibujarP(x, y, lx, ly, color) {
     //-- Definir un rectángulo de dimensiones lx x ly,
     ctx.rect(x, y, lx, ly);
 
-    //-- Color de relleno del rectángulo
-    ctx.fillStyle = color;
-
-    //-- Mostrar el relleno
-    ctx.fill();
-
-    //-- Mostrar el trazo del rectángulo
-    ctx.stroke();
+    //-- Añadimos imagen
+    ctx.drawImage(goldfish, x, y)
 
     ctx.closePath();
 
@@ -121,7 +111,7 @@ function dibujarTiroP() {
 }
 
 //-- Dibujar el objetivo
-dibujarO(xo,yo); // Pintar el objetivo
+dibujarO(xo, yo, pecera_vacia); // Pintar el objetivo
 
 //-- Dibujar el proyectil en la posición inicial
 dibujarP(xop, canvas.height-yop, 50, 50, "green"); // Pintar el proyectil
@@ -163,7 +153,7 @@ function lanzar() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //-- 3) Pintar los elementos en el canvas
-  dibujarO(xo,yo); // Pintar el objetivo
+  dibujarO(xo,yo, pecera_vacia); // Pintar el objetivo
 
   dibujarP(xp, canvas.height-yp, 50, 50, "red"); // Pintar el proyectil
 
@@ -181,6 +171,7 @@ function lanzar() {
   if (colision == 1 && victoria == 1) {
     crono.stop();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujarO(xo, yo, pecera_pez)
     ctx.font = "100px Verdana";
     ctx.fillStyle = 'green'
     ctx.fillText("GANASTE", 80, 230);
@@ -217,5 +208,3 @@ ang_range.oninput = () => {
   ang_range_disp.innerHTML = ang_range.value;
 }  
 
-//-- Hay que llamar a update la primera vez
-//lanzar();

@@ -3,9 +3,25 @@ Estilos para el campo de tiro
 */  
 
 #ctiro {
-  background-color: lightblue;
+  background-color: rgb(228, 228, 228);
   border-style: solid;
   border-width: 1px;
   border-color: black;
   border-radius: 5px;
+  background-image: url("sea.jpeg");
+}
+
+/* Imagen deshabilitada
+  Se usa para leerla desde js y
+  meterla en el canvas */
+#goldfish {
+  display: none;
+}
+
+#pecera_vacia {
+  display: none;
+}
+
+#pecera_pez {
+  display: none;
 }

@@ -172,18 +172,17 @@ function lanzar() {
 
 //-- Otras funciones....
 console.log(block);
-if (block == 0) {
-  //-- Función de retrollamada del botón de disparo
-  btnLanzar.onclick = () => {
+//-- Función de retrollamada del botón de disparo
+btnLanzar.onclick = () => {
+  if (block == 0) {
     lanzar();
-    block = 1;
   }
+  block = 1;
+}
 
-  //-- Función de retrollamada del botón de inicio
-  btnIniciar.onclick = () => {
-    location.reload();
-    block = 1
-  }
+//-- Función de retrollamada del botón de inicio
+btnIniciar.onclick = () => {
+  location.reload();
 }
 
 //-- Función genera numero aleatorio para la pos del onjetivo

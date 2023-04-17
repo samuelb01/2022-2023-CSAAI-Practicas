@@ -5,10 +5,14 @@ const selectors = {
     timer: document.querySelector('.timer'),
     comenzar: document.querySelector('.comenzar'),
     reiniciar: document.querySelector('.reiniciar'),
+    dimension2: document.getElementById('2x2'),
+    dimension4: document.getElementById('4x4'),
+    dimension6: document.getElementById('6x6'),
     win: document.querySelector('.win')
 }
 
 const state = {
+    gameGenerated: false,
     gameStarted: false,
     flippedCards: 0,
     totalFlips: 0,
@@ -16,7 +20,7 @@ const state = {
     loop: null
 }
 
-const generateGame = () => {
+let generateGame = () => {
     const dimensions = selectors.tablero.getAttribute('grid-dimension')
 
     //-- Nos aseguramos de que el número de dimensiones es par
@@ -26,7 +30,7 @@ const generateGame = () => {
     }
 
     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍']
+    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍', '🍥', '🍬', '🍟', '🍜', '🍙', '🍭', '🍪', '🍤']
     
     //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
     // es diferente.
@@ -37,11 +41,13 @@ const generateGame = () => {
     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
     // están desordenadas.
     const items = shuffle([...picks, ...picks])
+
+    console.log(items)
     
     //-- Vamos a utilizar una función de mapeo para generar 
     //  todas las cartas en función de las dimensiones
-    const cards = `
-        <div class="tablero" style="grid-template-columns: repeat(${dimensions}, auto)">
+    let cards = `
+        <div class="tablero" grid-dimension="${dimensions}" style="grid-template-columns: repeat(${dimensions}, auto)">
             ${items.map(item => `
                 <div class="card">
                     <div class="card-front"></div>
@@ -53,11 +59,13 @@ const generateGame = () => {
     
     //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
     // en código html.
-    const parser = new DOMParser().parseFromString(cards, 'text/html')
+    let parser = new DOMParser().parseFromString(cards, 'text/html')
 
     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
     // para el tablero de juego.
     selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+
+    state.gameGenerated = true
 }
 
 const pickRandom = (array, items) => {
@@ -112,12 +120,46 @@ const attachEventListeners = () => {
         
         // Pero si lo que ha pasado es un clic en el botón de comenzar lo que hacemos es
         // empezar el juego
-        } else if (eventTarget.className === 'comenzar' && !eventTarget.className.includes('disabled')) {
+        } else if (eventTarget.className === 'comenzar' && !eventTarget.className.includes('disabled') && state.gameGenerated === true) {
             startGame()
         // Click en botón de reiniciar
         // Reinicia el juego
         } else if (eventTarget.className === 'reiniciar') {
             location.reload()
+        }
+
+        // Dimensiones
+        if (eventTarget.className === 'dimensiones' && !eventTarget.className.includes('disabled')) {
+            // Se deshabilita el botón que se acaba de pulsar
+            eventTarget.classList.add('disabled')
+
+            // Condiciones para activar el resto de botones
+            if (eventTarget.id === '2x2') { // 2x2
+                selectors.dimension4.classList.toggle('disabled', selectors.dimension4.classList.contains('disbaled'))
+                selectors.dimension6.classList.toggle('disabled', selectors.dimension6.classList.contains('disbaled'))
+
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                selectors.tablero.setAttribute('grid-dimension', '2')
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                generateGame()
+            } else if (eventTarget.id === '4x4') {// 4x4
+                selectors.dimension2.classList.toggle('disabled', selectors.dimension2.classList.contains('disbaled'))
+                selectors.dimension6.classList.toggle('disabled', selectors.dimension6.classList.contains('disbaled'))
+
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                selectors.tablero.setAttribute('grid-dimension', '4')
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                generateGame()
+            }else if (eventTarget.id === '6x6') { // 6x6
+                selectors.dimension2.classList.toggle('disabled', selectors.dimension2.classList.contains('disbaled'))
+                selectors.dimension4.classList.toggle('disabled', selectors.dimension4.classList.contains('disbaled'))
+
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                selectors.tablero.setAttribute('grid-dimension', '6')
+                console.log(selectors.tablero.getAttribute('grid-dimension'))
+                generateGame()
+            }
+
         }
     })
 }
@@ -127,6 +169,9 @@ const startGame = () => {
     state.gameStarted = true
     // Desactivamos el botón de comenzar
     selectors.comenzar.classList.add('disabled')
+
+    // Desactivamos dimensiones
+    selectors.
 
     // Comenzamos el bucle de juego
     // Cada segundo vamos actualizando el display de tiempo transcurrido
@@ -146,7 +191,7 @@ const flipCard = card => {
     state.totalFlips++
 
     // Si el juego no estaba iniciado, lo iniciamos
-    if (!state.gameStarted) {
+    if (!state.gameStarted && state.gameGenerated === true) {
         startGame()
     }
 

@@ -52,6 +52,10 @@ button {
     position: relative;
 }
 
+.oculto {
+    display: none;
+}
+
 .tablero,
 .win {
     border-radius: 5px;

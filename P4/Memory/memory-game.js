@@ -5,9 +5,6 @@ const selectors = {
     timer: document.querySelector('.timer'),
     comenzar: document.querySelector('.comenzar'),
     reiniciar: document.querySelector('.reiniciar'),
-    dimension2: document.getElementById('2x2'),
-    dimension4: document.getElementById('4x4'),
-    dimension6: document.getElementById('6x6'),
     win: document.querySelector('.win')
 }
 
@@ -20,7 +17,7 @@ const state = {
     loop: null
 }
 
-let generateGame = () => {
+function generateGame() {
     const dimensions = selectors.tablero.getAttribute('grid-dimension')
 
     //-- Nos aseguramos de que el número de dimensiones es par
@@ -64,6 +61,8 @@ let generateGame = () => {
     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
     // para el tablero de juego.
     selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+
+    selectors.gridContainer.classList.toggle('oculto')
 
     state.gameGenerated = true
 }
@@ -128,38 +127,27 @@ const attachEventListeners = () => {
             location.reload()
         }
 
-        // Dimensiones
+        // Click en cualquiera de los botones de dimensiones
         if (eventTarget.className === 'dimensiones' && !eventTarget.className.includes('disabled')) {
-            // Se deshabilita el botón que se acaba de pulsar
-            eventTarget.classList.add('disabled')
 
-            // Condiciones para activar el resto de botones
-            if (eventTarget.id === '2x2') { // 2x2
-                selectors.dimension4.classList.toggle('disabled', selectors.dimension4.classList.contains('disbaled'))
-                selectors.dimension6.classList.toggle('disabled', selectors.dimension6.classList.contains('disbaled'))
-
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
+            if (eventTarget.id === '2x2') {
                 selectors.tablero.setAttribute('grid-dimension', '2')
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
-                generateGame()
-            } else if (eventTarget.id === '4x4') {// 4x4
-                selectors.dimension2.classList.toggle('disabled', selectors.dimension2.classList.contains('disbaled'))
-                selectors.dimension6.classList.toggle('disabled', selectors.dimension6.classList.contains('disbaled'))
-
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
+            } else if (eventTarget.id === '4x4') {
                 selectors.tablero.setAttribute('grid-dimension', '4')
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
-                generateGame()
-            }else if (eventTarget.id === '6x6') { // 6x6
-                selectors.dimension2.classList.toggle('disabled', selectors.dimension2.classList.contains('disbaled'))
-                selectors.dimension4.classList.toggle('disabled', selectors.dimension4.classList.contains('disbaled'))
-
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
+            } else if (eventTarget.id === '6x6') {
                 selectors.tablero.setAttribute('grid-dimension', '6')
-                console.log(selectors.tablero.getAttribute('grid-dimension'))
-                generateGame()
             }
 
+            // Array con todos los botones de dimension
+            const dimensionBottons = document.querySelectorAll('.dimensiones')
+
+            // Se deshabilitan los botones de dimensión
+            for (i = 0; i < dimensionBottons.length; i++) {
+                dimensionBottons[i].classList.add('disabled')
+            }
+
+            // Generamos el juego con la dimensión seleccionada
+            generateGame()
         }
     })
 }
@@ -171,7 +159,7 @@ const startGame = () => {
     selectors.comenzar.classList.add('disabled')
 
     // Desactivamos dimensiones
-    selectors.
+    selectors.dimension2
 
     // Comenzamos el bucle de juego
     // Cada segundo vamos actualizando el display de tiempo transcurrido
@@ -254,8 +242,8 @@ const flipBackCards = () => {
     state.flippedCards = 0
 }
 
-// Generamos el juego
-generateGame()
+// // Generamos el juego
+// generateGame()
 
 // Asignamos las funciones de callback para determinados eventos
 attachEventListeners()

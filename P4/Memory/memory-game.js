@@ -9,7 +9,6 @@ const selectors = {
 }
 
 const state = {
-    gameGenerated: false,
     gameStarted: false,
     flippedCards: 0,
     totalFlips: 0,
@@ -63,8 +62,6 @@ function generateGame() {
     selectors.tablero.replaceWith(parser.querySelector('.tablero'))
 
     selectors.gridContainer.classList.toggle('oculto')
-
-    state.gameGenerated = true
 }
 
 const pickRandom = (array, items) => {
@@ -181,8 +178,10 @@ const flipCard = card => {
     state.totalFlips++
 
     // Si el juego no estaba iniciado, lo iniciamos
-    if (!state.gameStarted && state.gameGenerated === true) {
+    if (!state.gameStarted) {
         startGame()
+    } else {
+        
     }
 
     // Si no tenemos la pareja de cartas girada

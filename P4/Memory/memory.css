@@ -17,6 +17,11 @@ html {
     transform: translate(-50%, -50%);
 }
 
+.dimension6 {
+    transform: translate(-50%, -30%)
+}
+
+
 .controls {
     display: flex;
     gap: 20px;

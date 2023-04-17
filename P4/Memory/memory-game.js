@@ -130,12 +130,14 @@ const attachEventListeners = () => {
         // Click en cualquiera de los botones de dimensiones
         if (eventTarget.className === 'dimensiones' && !eventTarget.className.includes('disabled')) {
 
+            // Modificamos HTML para el uso de generateGame()
             if (eventTarget.id === '2x2') {
                 selectors.tablero.setAttribute('grid-dimension', '2')
             } else if (eventTarget.id === '4x4') {
                 selectors.tablero.setAttribute('grid-dimension', '4')
             } else if (eventTarget.id === '6x6') {
                 selectors.tablero.setAttribute('grid-dimension', '6')
+                document.querySelector('.game').classList.add('dimension6')
             }
 
             // Array con todos los botones de dimension

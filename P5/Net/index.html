@@ -11,14 +11,20 @@
 <body>
     <p>Imagen en Origen</p>
     <img src="logoURJC.png" id="imagesrc">
-    <img src="logoURJCh.png" id="imagesrchide">    
-    <img src="cloud.jpg" id="cloud">
+    <img src="logoURJC.png" id="imagesrchide">    
+    <img src="cloud.png" id="cloud">
     <button id="bsend">Enviar</button>    
     <p>Imagen en Destino</p>
     <canvas id="canvas"></canvas>
-    <input type="range" id="netdelay" min="1" max="1000" value="1"/>
-    <p id="netdelay_value">0</p>    
-    <p>La red</p>
-    <img src="net.svg">    
+    <div>
+        <p>Retardo de red:</p>
+        <input type="range" id="netdelay" min="1" max="5" value="1"/>
+        <p id="netdelay_value">1</p>   
+        <p>Número de nodos:</p>
+        <input type="range" id="netnodes" min="3" max="8" value="3"/> 
+        <p id="netnodes_value">3</p>
+    </div>
+    <!-- <p>La red</p>
+    <img src="net.svg">  -->
 </body>
 </html>
